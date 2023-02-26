@@ -6,6 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import { StoreProvider } from "./app/context/StoreContext";
+import { Provider } from "react-redux";
+import { store } from "./app/store/ConfigureStore";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -14,13 +16,13 @@ const root = ReactDOM.createRoot(
 export const history = createBrowserHistory();
 
 root.render(
-  <Router history={history}>
-    <React.StrictMode>
-      <StoreProvider>
+  <Provider store={store}>
+    <Router history={history}>
+      <React.StrictMode>
         <App />
-      </StoreProvider>
-    </React.StrictMode>
-  </Router>
+      </React.StrictMode>
+    </Router>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
